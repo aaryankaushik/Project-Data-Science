@@ -39,7 +39,7 @@ Group members:
 3. Geojson data which contains coordinates was successfully exported to csv, and we have confirmed that the lattitude and longitude values are valid location in certain region in Northern Ireland.  
     <img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/nitrate-dataset-region.jpeg" width="50%" alt="Nitrate dataset region" />
 4. The nitrate data contains missing values and is unbalanced (with respect to multiple measurements). This may be a result of survey problem, measurement error or new sites that don't have past years measurements.
-5. Most of the sites have no nitrate measurements before 1999.  
+5. Most of the sites have no nitrate measurements before 1999. Maybe we can consider the data from 2000 onwards.  
     <img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/no-nitrate-before-1999.jpeg" width="50%" alt="Missing measurements before 1999" />
 6. If we plot the minimum and the maximum values of nitrate from each sites, we can see that most sites are clustered around the low minimum and low maximum values. No site is detected around the high minimum and high maximum values. This can indicate that most sites have a relatively low concentration of nitrate in the river water. Further analysis need to be performed to support this argument.  
     <img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/plot-min-max-nitrate-sites.png" width="50%" alt="Min vs max values of nitrate for each sites plot" />
