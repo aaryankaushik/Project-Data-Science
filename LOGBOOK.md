@@ -9,9 +9,9 @@ Group members:
 ## 2022-12-14
 
 1. We will focus on the topic about the association between rainfall and nitrate level in US region (Montana or Misissippi because those are agricultural regions). High nitrate level in water can be dangerous for drinking water and threatens ecosystem in water.
-2. @Adina UH and @Aaryan UH will look for water data here https://www.waterqualitydata.us/.
-3. @Mohammad Sazegar UH will look for rainfall data on the internet.
-4. I will look for other good dataset which is still under the topic of clean water as a backup plan.
+2. @Adina and @Aaryan will look for water data here https://www.waterqualitydata.us/.
+3. @Mohammad will look for rainfall data on the internet.
+4. @Rahmanda will look for other good dataset which is still under the topic of clean water as a backup plan.
 5. Everyone needs to also look for the data description, assess the quality of the data, and find what can we analyze from the data. Also look that the data contain time feature.
 6. Next meeting we will discuss our findings, and see what is the most feasible action from that.
 7. The daily meeting will be adjusted to 4pm everyday.
@@ -39,7 +39,7 @@ Group members:
 3. Geojson data which contains coordinates was successfully exported to csv, and we have confirmed that the lattitude and longitude values are valid location in certain region in Northern Ireland.
 4. The nitrate data contains missing values and is unbalanced (with respect to multiple measurements). This may be a result of survey problem, measurement error or new sites that don't have past years measurements.
 5. Most of the sites have no nitrate measurements before 1999.
-6. @Adina UH found a research report https://nora.nerc.ac.uk/id/eprint/501505/1/CR03051N.pdf. The research was about Nitrate concentrations in groundwater in Northern Ireland (published in 2003). We can use this as our reference (but take a note that our dataset is about river water).
+6. We found a research report https://nora.nerc.ac.uk/id/eprint/501505/1/CR03051N.pdf. The research was about Nitrate concentrations in groundwater in Northern Ireland (published in 2003). We can use this as our reference (but take a note that our dataset is about river water).
 7. Even though we expect some pollution in some sites, but preliminary result shows that majority of the sites are safe (the result from report on point 5 also shows the same conclusion).
 
 ### Action items:
