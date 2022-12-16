@@ -37,12 +37,12 @@ Group members:
 - Based on working session consultancy: The prof & assistants expect that we own the project ourselves, and they are aware that it can be challenging especially on finding a good dataset. However, they want to know how we can solve any problem during the project (whether it could be by switching topics, switching datasets, data wrangling etc).
 - We decided to stay on association between rainfall and nitrate concentrations topic.
 - Geojson data which contains coordinates was successfully exported to csv, and we have confirmed that the lattitude and longitude values are valid location in certain region in Northern Ireland.
-![Nitrate dataset region](https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/nitrate-dataset-region.jpeg)
+<img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/nitrate-dataset-region.jpeg" width="75%" alt="Nitrate dataset region" />
 - The nitrate data contains missing values and is unbalanced (with respect to multiple measurements). This may be a result of survey problem, measurement error or new sites that don't have past years measurements.
 - Most of the sites have no nitrate measurements before 1999.
-![Missing measurements before 1999](https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/no-nitrate-before-1999.jpeg)
+<img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/no-nitrate-before-1999.jpeg" width="75%" alt="Missing measurements before 1999" />
 - If we plot the minimum and the maximum values of nitrate from each sites, we can see that most sites are clustered around the low minimum and low maximum values. No site is detected around the high minimum and high maximum values. This can indicate that most sites have a relatively low concentration of nitrate in the river water. Further analysis need to be performed to support this argument.
-![Min vs max values of nitrate for each sites plot](https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/plot-min-max-nitrate-sites.png)
+<img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/plot-min-max-nitrate-sites.png" width="75%" alt="Min vs max values of nitrate for each sites plot" />
 - We found a research report https://nora.nerc.ac.uk/id/eprint/501505/1/CR03051N.pdf. The research was about Nitrate concentrations in groundwater in Northern Ireland (published in 2003). We can use this as our reference (but take a note that our dataset is about river water).
 - Even though we expect some pollution in some sites, but preliminary result shows that majority of the sites are safe (the result from report on point 5 also shows the same conclusion).
 
