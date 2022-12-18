@@ -2,30 +2,38 @@
 
 import os
 import json
+import csv
 
 os.chdir(os.getcwd() + '/data')
 
-geojson_file = open('nitrate-nothern-ireland-1990-2018.geojson')
-geojson = json.load(geojson_file)
+geo_filename = 'nitrate-nothern-ireland-1990-2018.geojson'
+csv_filename = 'converted_geojson.csv'
 
-features = ['OBJECTID', 'Site_Code', 'Site_Status_21Oct2020', 'Station_Name',
-            'Primary_Basin', 'X', 'Y', 'Date', 'Time2', 'Depth', 'NO3_N_MGL']
+def feature_to_row(feature, header):
+  l = []
+  for k in header:
+    l.append(feature['properties'][k])
+  coords = feature['geometry']['coordinates']
+  assert (len(coords) == 2)
+  l.extend(coords)
+  return l
 
-features_with_location = features + ['lattitude', 'longitude']
+with open(geo_filename, 'r') as geo_file:
+  with open(csv_filename, 'w', newline='') as csv_file:
+    geojson_data = json.load(geo_file)
+    features = geojson_data['features']
 
-with open('converted-geojson-data.csv', 'w') as data_file:
-  data_file.write(','.join(features_with_location) + '\n')
+    csv_writer = csv.writer(csv_file)
 
-  for record in geojson['features']:
-    values = []
+    is_header = True
+    header = []
 
     for feature in features:
-      values.append(record['properties'][feature])
+      if is_header:
+        is_header = False
+        header = list(feature['properties'].keys())
+        header.extend(['latitude', 'longitude'])
+        csv_writer.writerow(header)
 
-    values.extend(record['geometry']['coordinates'])
+      csv_writer.writerow(feature_to_row(feature, feature['properties'].keys()))
 
-    values = [str(value) for value in values]
-
-    data_file.write(','.join(values) + '\n')
-
-geojson_file.close()
