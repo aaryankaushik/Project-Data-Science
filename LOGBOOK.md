@@ -57,7 +57,7 @@ Group members:
 3. We are pretty much ready with the nitrate data, but still waiting for the final dataset with the rainfall data before we can actually start doing proper statistical method.
 4. We can map the site's coordinates using tableau:  
     <img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/nitrate-study-sites.png" width="50%" alt="Sites coordinates in map" />
-5. Top 10 sites that have highest NO3 level (and with the most number of observations) is shown in the plot below (nitrate > 10 mg/L is considered harmful):
+5. Top 10 sites that have highest NO3 level (and with the most number of observations) is shown in the plot below (nitrate > 10 mg/L is considered harmful):  
     <img src="https://raw.githubusercontent.com/aaryankaushik/Project-Data-Science/main/images/logbook/top-10-sites-nitrate.png" width="50%" alt="Scatter plot of top 10 sites with highest NO3 level" />
 6. Linear mixed model can be used to draw inference about the effect of rainfall to the level of nitrate concentration in the (river) water.
 7. Not sure if we can apply machine learning prediction, but maybe we can apply unsupervised machine learning like PCA and clustering.
