@@ -1,0 +1,13 @@
+name: ds-project
+channels:
+  - defaults
+dependencies:
+  - python=3.9.12
+  - black
+  - flake8
+  - pytest
+  - pip:
+    - meteostat
+    - numpy
+    - pandas
+prefix: C:\Users\Rahmanda Wibowo\anaconda3\envs\ds-project
