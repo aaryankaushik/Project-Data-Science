@@ -72,6 +72,38 @@ data.clean %>%
   ggplot(aes(n)) +
   geom_histogram()
 
+# Which obs that have NO3_N_MGL > 5 or > 10
+data.no3n_gt5 <- data.clean %>% filter(NO3_N_MGL > 5)
+length(unique(data.no3n_gt5$Site_Code)) # 219
+nrow(data.no3n_gt5) / nrow(data.clean) * 100 # 1.48%
+
+top10 <- data.no3n_gt5 %>% group_by(Site_Code) %>% summarise(n = n()) %>% top_n(10, n)
+
+ggplot(data.no3n_gt5 %>% filter(Site_Code %in% top10$Site_Code), aes(Date, NO3_N_MGL, color = Site_Code)) +
+  geom_point()
+
+data.no3n_gt5.date <- data.no3n_gt5 %>% 
+  mutate(date = format(Date, '%Y-%m-%d')) %>%
+  arrange(Site_Code, date) %>%
+  group_by(Site_Code) %>%
+  slice(c(1, n())) %>%
+  ungroup()
+
+dd <- data.frame(OBJECTID = double(), Site_Code = character(), 
+                 latitude = double(), longitude = double(),
+                 first_date = character(), last_date = character())
+
+for (i in seq(1, nrow(data.no3n_gt5.date)/2)) {
+  cur <- data.no3n_gt5.date[i, ]
+  nex <- data.no3n_gt5.date[i+1, ]
+  dd[i, ] <- list(cur$OBJECTID, cur$Site_Code, 
+               cur$latitude, cur$longitude, 
+               cur$date, nex$date)
+}
+
+write_csv(dd, 'data/nitrate-gt-5mgl.csv')
+
+# Appendix
 # Generate lat and lon for each unique sites
 ll <- (data %>% group_by(Site_Code) %>% filter(row_number() == 1)) %>% select(latitude, longitude)
 ll.export <- data.frame(lat = ll$latitude, lon = ll$longitude) %>% slice(1:1)
