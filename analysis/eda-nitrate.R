@@ -13,9 +13,9 @@ hist(data$NO3_N_MGL)
 length(unique(data$Site_Code))
 
 # How is the distribution of count NO3 per sites? (unbalanced data)
-data %>% 
-  select(Site_Code, NO3_N_MGL) %>% 
-  group_by(Site_Code) %>% 
+data %>%
+  select(Site_Code, NO3_N_MGL) %>%
+  group_by(Site_Code) %>%
   count() %>%
   ggplot(aes(n)) +
   geom_histogram()
@@ -37,7 +37,7 @@ ann <- data.frame(
   hjust = c(0, 0, 1, 1),
   vjust = c(0, 1, 0, 1)
 )
-  
+
 ggplot(min_max_NO3_per_sites, aes(min, max, label = Site_Code)) +
   geom_point(size = 1) +
   geom_text(size = 2, vjust = -0.5) +
@@ -48,8 +48,8 @@ ggplot(min_max_NO3_per_sites, aes(min, max, label = Site_Code)) +
   ylab('max NO3_N_MGL')
 
 # Missing values
-data.na <- data %>% 
-  group_by(Site_Code) %>% 
+data.na <- data %>%
+  group_by(Site_Code) %>%
   summarise(count = n(), count_na = sum(is.na(NO3_N_MGL))) %>%
   mutate(percentage = count_na / count * 100)
 data.na
@@ -65,9 +65,9 @@ length(good_sites) # 767 sites
 nrow(data.clean) # 140459
 nrow(data.clean) / nrow(data) * 100 # 99.3%
 hist(data.clean$NO3_N_MGL) # dist NO3 is still skewed
-data.clean %>% 
-  select(Site_Code, NO3_N_MGL) %>% 
-  group_by(Site_Code) %>% 
+data.clean %>%
+  select(Site_Code, NO3_N_MGL) %>%
+  group_by(Site_Code) %>%
   count() %>%
   ggplot(aes(n)) +
   geom_histogram()
@@ -81,48 +81,3 @@ top10 <- data.no3n_gt5 %>% group_by(Site_Code) %>% summarise(n = n()) %>% top_n(
 
 ggplot(data.no3n_gt5 %>% filter(Site_Code %in% top10$Site_Code), aes(Date, NO3_N_MGL, color = Site_Code)) +
   geom_point()
-
-
-# data.no3n_gt5.date <- data.no3n_gt5 %>% 
-#   mutate(date = format(Date, '%Y-%m-%d')) %>%
-#   arrange(Site_Code, date) %>%
-#   group_by(Site_Code) %>%
-#   slice(c(1, n())) %>%
-#   ungroup()
-
-data.date <- data %>% 
-  mutate(date = format(Date, '%Y-%m-%d')) %>%
-  select(-OBJECTID) %>%
-  arrange(Site_Code, date) %>%
-  group_by(Site_Code) %>%
-  slice(c(1, n())) %>%
-  ungroup()
-
-dd <- data.frame(Site_Code = character(), 
-                 latitude = double(), longitude = double(),
-                 first_date = character(), last_date = character())
-
-j <- 1
-
-for (i in seq(1, nrow(data.date)/2)) {
-  cur <- data.date[j, ]
-  nex <- data.date[j+1, ]
-  first_date <- cur$date
-  last_date <- nex$date
-  if (first_date > last_date) {
-    first_date <- nex$date
-    last_date <- cur$date
-  }
-  dd[i, ] <- list(cur$Site_Code, 
-               cur$latitude, cur$longitude, 
-               first_date, last_date)
-  j <- j+2
-}
-
-write_csv(dd, 'data/nitrate-site-ll-w-date.csv')
-
-# Appendix
-# Generate lat and lon for each unique sites
-ll <- (data %>% group_by(Site_Code) %>% filter(row_number() == 1)) %>% select(latitude, longitude)
-ll.export <- data.frame(lat = ll$latitude, lon = ll$longitude) %>% slice(1:1)
-write_csv(ll.export, 'data/ll-100.csv')
