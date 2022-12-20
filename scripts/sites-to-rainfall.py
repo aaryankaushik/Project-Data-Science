@@ -25,8 +25,8 @@ with open('rainfall-data.csv', 'w') as data_file:
   for _, row in df.iloc[800:].iterrows():
     base_url = 'https://archive-api.open-meteo.com/v1/era5?'
     url_params = {
-      'latitude': row['longitude'],
-      'longitude': row['latitude'],
+      'latitude': row['latitude'],
+      'longitude': row['longitude'],
       'start_date': row['first_date'],
       'end_date': row['last_date'],
       'daily': 'rain_sum',
@@ -39,6 +39,6 @@ with open('rainfall-data.csv', 'w') as data_file:
       data = json.load(payload)
       for index, rain_sum in enumerate(data['daily']['rain_sum']):
         date = data['daily']['time'][index]
-        values = [row['Site_Code'], date, rain_sum, row['longitude'], row['latitude']]
+        values = [row['Site_Code'], date, rain_sum, row['latitude'], row['longitude']]
         values = [str(value) for value in values]
         data_file.write(','.join(values) + '\n')
