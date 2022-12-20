@@ -66,6 +66,18 @@ Group members:
   - While waiting for rainfall data from @Mohammad, we will also try to use API from point 2.
   - Do some exploratory analysis on nitrate data.
 
-## Note:
+### Note:
   - Tomorrow is deadline for Inference for Statistic and Data Science (@Adina and @Rahmanda)
   - @Aaryan might be not available tomorrow because of a doctor's appointment.
+
+## 2022-12-20
+
+1. @Adina has prepared a template for [our poster](https://docs.google.com/presentation/d/1DBbvO71lOpK6dckjRvlo0KpiOCoGmaVe-7xnXwogEbg/edit?usp=sharing) 🎉.
+2. @Aaryan analyzed the possibility of doing a balanced data analysis. Next, we also need to see the distribution of all sites from balanced data in a map so that we can see whether the sites are not clustered in just few areas.
+3. The lattitude and longitude data from the nitrate dataset were transformed into X and Y so that it can match with the north and east data from the rainfall dataset. However, there are many observations that do not have a match X and Y coordinates between the data set. We are not sure what happened with the rainfall dataset.
+4. The rainfall dataset from open-meteo.com API is [ready](https://github.com/aaryankaushik/Project-Data-Science/tree/main/data/rainfall). Somehow the rainfall data from API doesn't match with our existing rainfall dataset. However, the trend pattern seems similar and has a consistent factor of a multiplier (10?). We also see that the existing rainfall data unit is larger compared to API dataset. 
+5. Because of time limitation, we decided to use and trust the rainfall dataset from API. The next (or maybe last) step for merging the data is to match the site and the date from between two datasets.
+
+### Action Items:
+  - @Aaryan and @Adina will research about analysis methods (EDA, clustering etc) and gathering some knowledges about spatial analysis.
+  - @Rahmanda and @Mohammad will continue merging the data and finish it asap.
