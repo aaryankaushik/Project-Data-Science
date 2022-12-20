@@ -82,26 +82,44 @@ top10 <- data.no3n_gt5 %>% group_by(Site_Code) %>% summarise(n = n()) %>% top_n(
 ggplot(data.no3n_gt5 %>% filter(Site_Code %in% top10$Site_Code), aes(Date, NO3_N_MGL, color = Site_Code)) +
   geom_point()
 
-data.no3n_gt5.date <- data.no3n_gt5 %>% 
+
+# data.no3n_gt5.date <- data.no3n_gt5 %>% 
+#   mutate(date = format(Date, '%Y-%m-%d')) %>%
+#   arrange(Site_Code, date) %>%
+#   group_by(Site_Code) %>%
+#   slice(c(1, n())) %>%
+#   ungroup()
+
+data.date <- data %>% 
   mutate(date = format(Date, '%Y-%m-%d')) %>%
+  select(-OBJECTID) %>%
   arrange(Site_Code, date) %>%
   group_by(Site_Code) %>%
   slice(c(1, n())) %>%
   ungroup()
 
-dd <- data.frame(OBJECTID = double(), Site_Code = character(), 
+dd <- data.frame(Site_Code = character(), 
                  latitude = double(), longitude = double(),
                  first_date = character(), last_date = character())
 
-for (i in seq(1, nrow(data.no3n_gt5.date)/2)) {
-  cur <- data.no3n_gt5.date[i, ]
-  nex <- data.no3n_gt5.date[i+1, ]
-  dd[i, ] <- list(cur$OBJECTID, cur$Site_Code, 
+j <- 1
+
+for (i in seq(1, nrow(data.date)/2)) {
+  cur <- data.date[j, ]
+  nex <- data.date[j+1, ]
+  first_date <- cur$date
+  last_date <- nex$date
+  if (first_date > last_date) {
+    first_date <- nex$date
+    last_date <- cur$date
+  }
+  dd[i, ] <- list(cur$Site_Code, 
                cur$latitude, cur$longitude, 
-               cur$date, nex$date)
+               first_date, last_date)
+  j <- j+2
 }
 
-write_csv(dd, 'data/nitrate-gt-5mgl.csv')
+write_csv(dd, 'data/nitrate-site-ll-w-date.csv')
 
 # Appendix
 # Generate lat and lon for each unique sites
