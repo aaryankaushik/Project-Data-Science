@@ -32,7 +32,7 @@ with open(geo_filename, 'r') as geo_file:
       if is_header:
         is_header = False
         header = list(feature['properties'].keys())
-        header.extend(['latitude', 'longitude'])
+        header.extend(['longitude','latitude'])
         csv_writer.writerow(header)
 
       csv_writer.writerow(feature_to_row(feature, feature['properties'].keys()))
