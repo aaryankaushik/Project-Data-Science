@@ -1,4 +1,5 @@
 # Project-Data-Science
+- [Poster](https://github.com/aaryankaushik/Project-Data-Science/blob/55e443949e1d49ae8280690952470d0ce7bc2cce/Poster.pdf)
 The course takes place @ UHasselt from December 12th until 23rd, 2023.
 The goal of this project week is to introduce a real-life challenge.
 For this, we take the Data Analysis Competition 2023,  issued by The International Association for Statistical Computing (IASC):
