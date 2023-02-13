@@ -4,7 +4,7 @@
 The course takes place @ UHasselt from December 12th until 23rd, 2023.\
 The goal of this project week is to introduce a real-life challenge.\
 For this, we take the Data Analysis Competition 2023,  issued by The International Association for Statistical Computing (IASC):\
-https://iasc-isi.org/2022/10/11/call-of-the-data-analysis-competition-2023/
+https://iasc-isi.org/2022/10/11/call-of-the-data-analysis-competition-2022/
 
 ## Prequisite
 
